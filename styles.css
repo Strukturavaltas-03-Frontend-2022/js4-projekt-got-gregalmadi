@@ -6,6 +6,8 @@ body {
   text-align: center;
   margin: 0;
   padding: 0;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: row;
 }
@@ -109,15 +111,24 @@ body {
   display: flex;
   flex-direction: row;
   height: 40px;
+  gap: 5px;
 }
 
 .search {
   font-size: 150%;
+  border: none;
+  border-radius: 5px;
 }
 
 .input {
-  font-size: 110%;
+  display: flex;
+  border: none;
+  border-radius: 5px;
+  font-family: "Game of Thrones", serif;
+  font-size: 70%;
   width: 100%;
+  padding: 5px;
+  outline: none;
 }
 
 .notFound {
@@ -153,5 +164,26 @@ body {
   }
   100% {
     scale: 1;
+  }
+}
+
+/* Mobile screen responsive design (scrollable) */
+
+@media only screen and (max-width: 1050px) {
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
+  .container__characters {
+    grid-template: repeat(12, auto) / repeat(4, auto);
+  }
+
+  .section__sidebar {
+    width: 300px;
+    height: 200%;
+  }
+
+  .section__map {
+    height: 200%;
   }
 }
