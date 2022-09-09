@@ -24,8 +24,10 @@ let isOpen = true;
 // Sorting character data and filtering alive characters
 const aliveAndSortedCharData = charData
   .sort((a, b) => {
-    let x = a.portrait.slice(7).slice(0, -4);
-    let y = b.portrait.slice(7).slice(0, -4);
+    let x = a.name.split(" ")[0];
+    let y = b.name.split(" ")[0];
+    //let x = a.portrait.slice(7).slice(0, -4);
+    //let y = b.portrait.slice(7).slice(0, -4);
     return x < y ? -1 : x > y ? 1 : 0;
   })
   .filter((char) => !char?.dead);
@@ -49,9 +51,13 @@ const aliveAndSortedCharData = charData
   tileImages.forEach((img, i) => {
     img.setAttribute("src", `${aliveAndSortedCharData[i].portrait}`);
   });
-  tileNames.forEach(
-    (charName, i) => (charName.innerHTML = aliveAndSortedCharData[i].name)
-  );
+  tileNames.forEach((charName, i) => {
+    if (aliveAndSortedCharData[i].alias) {
+      charName.innerHTML = aliveAndSortedCharData[i].alias;
+    } else {
+      charName.innerHTML = aliveAndSortedCharData[i].name;
+    }
+  });
 })();
 
 //------------------------------------
@@ -130,6 +136,10 @@ const openSidebar = () => {
   sidebar.style.width = "400px";
   buttonSearch.style.visibility = "visible";
   searchValue.style.visibility = "visible";
+  characterName.style.display = "block";
+  characterImage.style.display = "block";
+  characterBadge.style.display = "block";
+  characterBio.style.display = "block";
   isOpen = true;
 };
 
@@ -138,6 +148,10 @@ const closeSidebar = () => {
   sidebar.style.width = "100px";
   buttonSearch.style.visibility = "hidden";
   searchValue.style.visibility = "hidden";
+  characterName.style.display = "none";
+  characterImage.style.display = "none";
+  characterBadge.style.display = "none";
+  characterBio.style.display = "none";
   isOpen = false;
 };
 
