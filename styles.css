@@ -136,6 +136,14 @@ body {
   padding: 20px;
 }
 
+.btn__sidebar--open {
+  position: fixed;
+  width: 5px;
+  height: 100vh;
+  background-color: rgb(131, 191, 211);
+  cursor: e-resize;
+}
+
 /* Animations -------------------------------------------*/
 .selected {
   animation: selected 2s infinite;
