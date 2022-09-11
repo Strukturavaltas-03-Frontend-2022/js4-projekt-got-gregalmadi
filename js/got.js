@@ -72,7 +72,7 @@ const showDetails = (img, i) => {
   if (aliveAndSortedCharData[i]?.picture.includes("jpg")) {
     characterImage.setAttribute("src", `${aliveAndSortedCharData[i].picture}`);
   } else {
-    characterImage.setAttribute("src", `assets/pictures/noPic.jpg`);
+    characterImage.setAttribute("src", `./assets/pictures/noPic.jpg`);
   }
 
   characterName.innerHTML = `${aliveAndSortedCharData[i].name}`;
@@ -80,15 +80,15 @@ const showDetails = (img, i) => {
   if (aliveAndSortedCharData[i]?.house)
     characterBadge.setAttribute(
       "src",
-      `../assets/houses/${aliveAndSortedCharData[i].house}.png`
+      `./assets/houses/${aliveAndSortedCharData[i].house}.png`
     );
   else if (aliveAndSortedCharData[i]?.organization) {
     characterBadge.setAttribute(
       "src",
-      `../assets/houses/${aliveAndSortedCharData[i].organization}.png`
+      `./assets/houses/${aliveAndSortedCharData[i].organization}.png`
     );
   } else {
-    characterBadge.setAttribute("src", `../assets/houses/noHouse.png`);
+    characterBadge.setAttribute("src", `./assets/houses/noHouse.png`);
   }
 
   characterBio.innerHTML = `${aliveAndSortedCharData[i].bio}`;
@@ -115,9 +115,11 @@ buttonSearch.addEventListener("click", () => {
     ) {
       openSidebar();
       showDetails(tileImages[i], i);
+      searchValue.value = "";
       break;
     } else {
       searchInfo.innerHTML = "No character found";
+      searchValue.value = "";
     }
   }
 });
